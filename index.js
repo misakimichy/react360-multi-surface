@@ -6,8 +6,10 @@ import {
   View,
 } from 'react-360';
 import CurrentPost from './CurrentPost'
+import TopPosts from './TopPosts'
 
 AppRegistry.registerComponent('CurrentPost', () => CurrentPost)
+AppRegistry.registerComponent('TopPosts', () => TopPosts)
 // export default class react360_project extends React.Component {
 //   render() {
 //     return (
