@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { StyleSheet, Text, View, VirButton } from 'react-360'
+import { StyleSheet, Text, View } from 'react-360'
 import { connect } from './Store'
 
 /*
@@ -13,7 +13,7 @@ const CurrentPost = props => {
     }
 
     if(props.current < 0) {
-        return(
+        return (
             <View style={styles.wrapper}>
                 <View style={{flex: 1, justifyContent: 'center'}}>
                     <Text style={{textAlign: 'center'}}>Select a Model</Text>
@@ -25,9 +25,9 @@ const CurrentPost = props => {
     const post = props.posts[props.current]
     return(
         <View style={styles.wrapper}>
-            <Text style={styles.name}>{posts.name}</Text>
-            <Text style={styles.author}>{posts.author}</Text>
-            <Text style={styles.description}>{posts.description}</Text>
+            <Text style={styles.name}>{post.name}</Text>
+            <Text style={styles.author}>{post.author}</Text>
+            <Text style={styles.description}>{post.description}</Text>
         </View>
     )
 }

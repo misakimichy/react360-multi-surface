@@ -26,32 +26,33 @@ const POLY_PATH = 'https://poly.googleapis.com/v1/assets?'
 export function initialize(apiKey) {
     const options = {
         curated: true,
-        fomat: 'GLTF2',
+        format: 'GLTF2',
         key: apiKey,
         pageSize: 5
     }
 
-const queryString = Pbject.keys(options)
-    .map(k => `${k}=${options[k]}`)
-    .join(`&`)
-fetch(POLY_PATH + queryString)
-    .then(res => res.json())
-    .then(body => {
-        const entries = body.assets.map(asset => {
-            const objSource = asset.formats.fileter(
-                format => format.formatType === 'GLTF2'
-            )[0]
-            return {
-                id: asset.name,
-                name:asset.displayName,
-                description: asset.description,
-                source: objSource,
-                preview: asset.thumbnail.url,
-            }
+    const queryString = Object.keys(options)
+        .map(k => `${k}=${options[k]}`)
+        .join('&')
+    fetch(POLY_PATH + queryString)
+        .then(res => res.json())
+        .then(body => {
+            const entries = body.assets.map(asset => {
+                const objSource = asset.formats.filter(
+                    format => format.formatType === 'GLTF2'
+                )[0]
+                return {
+                    id: asset.name,
+                    name:asset.displayName,
+                    author: asset.authorName,
+                    description: asset.description,
+                    source: objSource,
+                    preview: asset.thumbnail.url,
+                }
+            })
+            State.posts = entries
+            updateComponsntes()
         })
-        State.posts = entries
-        updateComponsntes()
-    })
 }
 
 export function setCurrent(value) {

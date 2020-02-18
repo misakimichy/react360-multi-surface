@@ -13,10 +13,10 @@ function init(bundle, parent, options = {}) {
   // Create three roots: two flat panels on the left and the right, and a Location
   // to mount rendered models in 3D space
   const leftPanel = new Surface(300, 600, Surface.SurfaceShape.Flat)
-  leftPanel.setAngle(-0.6, 0)
+  leftPanel.setAngle(-0.3, 0)
 
   const rightPanel = new Surface(300, 600, Surface.SurfaceShape.Flat)
-  rightPanel.setAngle(0.6, 0)
+  rightPanel.setAngle(0.5, 0)
   r360.renderToSurface(
     r360.createRoot('TopPosts'),
     leftPanel
@@ -30,14 +30,7 @@ function init(bundle, parent, options = {}) {
     new Location([0, -2, -10]),
   )
 
-  // Render your app content to the default cylinder surface
-  // r360.renderToSurface(
-  //   r360.createRoot('react360_project', { /* initial props */ }),
-  //   r360.getDefaultSurface()
-  // );
-
-  // Load the initial environment
-  r360.compositor.setBackground(r360.getAssetURL('cat1.jpeg'));
+  r360.compositor.setBackground('./static_assets/cat1.jpeg');
 }
 
 window.React360 = {init};
